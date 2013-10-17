@@ -1,29 +1,34 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
+#define BOTTOM_BAR_HEIGHT	22
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
+static const char normbordercolor[] = "#333333";
+static const char normbgcolor[]     = "#051121";
+static const char normfgcolor[]     = "#FFFFFF";
 static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char selfgcolor[]      = "#FFFFFF";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "irc", "steam", "3", "4", "5", "6", "7", "8", "web" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+	/* class       instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+	{ "Acroread", NULL,       NULL,       0,            True,        -1 },
+	{ "GQview",   NULL,       NULL,       0,            True,        -1 },
+	{ "MPlayer",  NULL,       NULL,       0,            True,        -1 },
+	{ "Steam",    NULL,       NULL,       1 << 1,       True,        -1 },
 };
 
 /* layout(s) */
@@ -33,13 +38,13 @@ static const Bool resizehints = True; /* True means respect size hints in tiled 
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[T]",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -51,8 +56,11 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]  = { "xterm", NULL };
+static const char *volup[]    = { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
+static const char *voldown[]  = { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
+static const char *volmute[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -89,6 +97,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,							0x1008ff13, spawn,			{.v = volup} },
+	{ 0,							0x1008ff11, spawn,			{.v = voldown} },
+	{ 0,							0x1008ff12, spawn,			{.v = volmute} }
 };
 
 /* button definitions */
