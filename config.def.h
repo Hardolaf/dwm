@@ -66,8 +66,9 @@ static const char *termcmd[] 	= { "xterm", NULL };
 static const char *volup[]		= { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
 static const char *voldown[]	= { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
 /*static const char *volmute[]	= { "amixer", "-q", "sset", "Master", "toggle", NULL };*/
-static const char *backlightup[]   = { "xbacklight", "-inc", "10", NULL};
-static const char *backlightdown[] = { "xbacklight", "-dec", "10", NULL};
+static const char *backlightup[]   = { "xbacklight", "-inc", "10", NULL };
+static const char *backlightdown[] = { "xbacklight", "-dec", "10", NULL };
+static const char *managedisplay[] = { "arandr", NULL };
 
 
 static Key keys[] = {
@@ -113,6 +114,7 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioNext,			spawn,			SHCMD("xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioNext") },
 	{ 0,					XF86XK_MonBrightnessUp,		spawn,			{.v = backlightup} },
 	{ 0,					XF86XK_MonBrightnessDown,	spawn,			{.v = backlightdown} },
+	{ 0,					XF86XK_Display,				spawn,			{.v = managedisplay} },
 };
 
 /* button definitions */
