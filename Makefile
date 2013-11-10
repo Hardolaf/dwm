@@ -6,7 +6,7 @@ include config.mk
 SRC = drw.c dwm.c util.c
 OBJ = ${SRC:.c=.o}
 
-all: options dwm
+all: options config.def.h dwm
 
 options:
 	@echo dwm build options:
@@ -20,8 +20,11 @@ options:
 
 ${OBJ}: config.h config.mk
 
+config.def.h:
+	@echo creating config.h from $@
+	@cp $@ config.h
+
 config.h:
-	@if [ -e config.h ]; then rm config.h;
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
 
@@ -32,6 +35,7 @@ dwm: ${OBJ}
 clean:
 	@echo cleaning
 	@rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
+	@rm -f config.h
 
 dist: clean
 	@echo creating dist tarball
