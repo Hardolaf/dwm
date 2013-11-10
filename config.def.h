@@ -15,7 +15,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "irc", "steam", "music", "4", "5", "6", "7", "email", "web" };
+static const char *tags[] = { "irc", "steam", "3", "4", "5", "6", "7", "8", "web" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,7 +30,6 @@ static const Rule rules[] = {
 	{ "MPlayer",     NULL,       NULL,       0,            True,        -1 },
 	{ "Steam",       NULL,       NULL,       1 << 1,       False,       -1 },
 	{ "Thunderbird", NULL,       NULL,       1 << 7,       False,       -1 },
-	{ "Spotify",     NULL,       NULL,       1 << 2,       False        -1 },
 };
 
 /* layout(s) */
@@ -63,10 +62,6 @@ static const char *termcmd[]  = { "xterm", NULL };
 static const char *volup[]    = { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
 static const char *voldown[]  = { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
 static const char *volmute[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
-static const char *spotifynext = { "xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioNext", NULL};
-static const char *spotifyplay = { "xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioPlay", NULL};
-static const char *spotifyprev = { "xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioPrev", NULL};
-
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -105,10 +100,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ 0,							0x1008ff13, spawn,			{.v = volup} },
 	{ 0,							0x1008ff11, spawn,			{.v = voldown} },
-	{ 0,							0x1008ff12, spawn,			{.v = volmute} },
-	{ 0,							XF86AudioPrev, spawn,		{.v = spotifyprev} },
-	{ 0,							XF86AudioPlay, spawn,		{.v = spotifyplay} },
-	{ 0,							XF86AudioNext, spawn,		{.v = spotifynext} },
+	{ 0,							0x1008ff12, spawn,			{.v = volmute} }
 };
 
 /* button definitions */
