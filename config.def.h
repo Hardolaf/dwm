@@ -65,7 +65,7 @@ static const char *dmenucmd[]	= { "dmenu_run", "-fn", font, "-nb", normbgcolor, 
 static const char *termcmd[] 	= { "xterm", NULL };
 static const char *volup[]		= { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
 static const char *voldown[]	= { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
-static const char *volmute[]	= { "amixer", "-q", "sset", "Master", "toggle", NULL };
+/*static const char *volmute[]	= { "amixer", "-q", "sset", "Master", "toggle", NULL };*/
 
 static Key keys[] = {
 	/* modifier				key							function        argument */
@@ -104,7 +104,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_q,quit,									{0} },
 	{ 0,					XF86XK_AudioRaiseVolume,	spawn,			{.v = volup} },
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = voldown} },
-	{ 0,					0x1008ff12,					spawn,			{.v = volmute} }
+/*	{ 0,					0x1008ff12,					spawn,			{.v = volmute} },*/
+	{ 0,					XF86XK_AudioPrev,			spawn,			SHCMD("xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioPrev") },
+	{ 0,					XF86XK_AudioPlay,			spawn, 			SHCMD("xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioPlay") },
+	{ 0,					XF86XK_AudioNext,			spawn,			SHCMD("xdotool key --window $(xdotool search --name \"Spotify (Premium )?- Linux Preview\"|head -n1) XF86AudioNext") },
 };
 
 /* button definitions */
