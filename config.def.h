@@ -69,6 +69,7 @@ static const char *voldown[]		= { "amixer", "-q", "sset", "Master", "5%-", "unmu
 static const char *backlightup[]	= { "xbacklight", "-inc", "10", NULL };
 static const char *backlightdown[]	= { "xbacklight", "-dec", "10", NULL };
 static const char *managedisplay[]	= { "arandr", NULL };
+static const char *screensaveron[]	= { "xscreensaver-command", "--activate", NULL };
 
 
 static Key keys[] = {
@@ -115,6 +116,7 @@ static Key keys[] = {
 	{ 0,					XF86XK_MonBrightnessUp,		spawn,			{.v = backlightup} },
 	{ 0,					XF86XK_MonBrightnessDown,	spawn,			{.v = backlightdown} },
 	{ 0,					XF86XK_Display,				spawn,			{.v = managedisplay} },
+	{ 0,					XF86XK_ScreenSaver,			spawn,			{.v = screensaveron} },
 };
 
 /* button definitions */
