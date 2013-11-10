@@ -61,14 +61,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]	= { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[] 	= { "xterm", NULL };
-static const char *volup[]		= { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
-static const char *voldown[]	= { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
-/*static const char *volmute[]	= { "amixer", "-q", "sset", "Master", "toggle", NULL };*/
-static const char *backlightup[]   = { "xbacklight", "-inc", "10", NULL };
-static const char *backlightdown[] = { "xbacklight", "-dec", "10", NULL };
-static const char *managedisplay[] = { "arandr", NULL };
+static const char *dmenucmd[]		= { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[] 		= { "xterm", NULL };
+static const char *volup[]			= { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
+static const char *voldown[]		= { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
+/*static const char *volmute[]		= { "amixer", "-q", "sset", "Master", "toggle", NULL };*/
+static const char *backlightup[]	= { "xbacklight", "-inc", "10", NULL };
+static const char *backlightdown[]	= { "xbacklight", "-dec", "10", NULL };
+static const char *managedisplay[]	= { "arandr", NULL };
 
 
 static Key keys[] = {
