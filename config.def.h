@@ -1,5 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Include X11 keycodes */
+#include <X11/XF86keysym.h>
+
 /* appearance */
 #define BOTTOM_BAR_HEIGHT	22
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
@@ -15,7 +18,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "irc", "steam", "3", "4", "5", "6", "7", "email", "web" };
+static const char *tags[] = { "irc", "steam", "music", "4", "5", "6", "7", "email", "web" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,6 +33,7 @@ static const Rule rules[] = {
 	{ "MPlayer",     NULL,       NULL,       0,            True,        -1 },
 	{ "Steam",       NULL,       NULL,       1 << 1,       False,       -1 },
 	{ "Thunderbird", NULL,       NULL,       1 << 7,       False,       -1 },
+	{ "Spotify",     NULL,       NULL,       1 << 2,       False,       -1 },
 };
 
 /* layout(s) */
