@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	{ "Acroread", NULL,       NULL,       0,            True,        -1 },
 	{ "GQview",   NULL,       NULL,       0,            True,        -1 },
 	{ "MPlayer",  NULL,       NULL,       0,            True,        -1 },
-	{ "Steam",    NULL,       NULL,       1 << 1,       True,        -1 },
+	{ "Steam",    NULL,       NULL,       1 << 1,       False,       -1 },
 };
 
 /* layout(s) */
